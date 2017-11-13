@@ -18,8 +18,8 @@ public class AbrirArquivo {
 	private File sourceFile;
 	private boolean loaded;
 
-	private void loadData() throws FileNotFoundException {
-		if (sourceFile == null) return;
+	private ArrayList<Gene> loadData() throws FileNotFoundException {
+		if (sourceFile == null) return null;
 		
 		Pattern pattern = Pattern.compile("(\\[(.*?)\\])");
 		Pattern patloc = Pattern.compile("(\\[location=(\\d+)..(\\d+)\\])");
@@ -45,7 +45,7 @@ public class AbrirArquivo {
 					// System.out.println("--------");
 					
 					Gene gene = new Gene(locus,begin,end, sequence);
-					System.out.println(gene);
+					//System.out.println(gene);
 					listagenes.add(gene);
 					
 					locus = "";
@@ -77,6 +77,7 @@ public class AbrirArquivo {
 		}
 		data.close();
 		loaded = true;
+		return listagenes;
 	}
 
 	private AbrirArquivo(){
@@ -91,10 +92,11 @@ public class AbrirArquivo {
 		return este;
 	}
 	
-	public void inicializa(File sourceFile) throws FileNotFoundException {
+	public ArrayList<Gene> inicializa(File sourceFile) throws FileNotFoundException {
 		this.sourceFile = sourceFile;
-		this.loadData();
+		ArrayList<Gene> listagenes = this.loadData();
 		this.loaded = true;
+		return listagenes;
 	}
 
 

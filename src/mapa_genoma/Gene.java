@@ -27,6 +27,14 @@ public class Gene {
 				"Sequencia = " + basesGeral;
 	}
 	
+	
+	public void geracodons1() {
+		Leitura1 leitura = new Leitura1();
+		System.out.println(leitura.executarLeitura(basesGeral));
+		
+	}
+	
+	
 	public String getLocus() {
 		return locus;
 	}
