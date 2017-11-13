@@ -30,7 +30,8 @@ public class AbrirArquivo {
 		String locus = "";
 		long begin = -1;
 		long end = -1;
-		List<Character> sequence = new ArrayList<>(200);
+		ArrayList<Character> sequence = new ArrayList<>(200);
+		ArrayList<Gene> listagenes = new ArrayList<Gene>();
 
 		// Percorre o arquivo do genoma
 		while (data.hasNextLine()) {
@@ -39,15 +40,20 @@ public class AbrirArquivo {
 			if (line.length() > 0 && line.charAt(0) == '>') {
 				if (begin != -1) { // Se já tem um Gene para montar, monta e armazena
 					// Neste exemplo está imprimindo na tela, mas deveria armazenar na estrutura de dados
-					System.out.println("Locus: "+locus+", inicio:"+begin+", "+end);
-					System.out.println(sequence);
-					System.out.println("--------");
+					// System.out.println("Locus: "+locus+", inicio:"+begin+", "+end);
+					// System.out.println(sequence);
+					// System.out.println("--------");
+					
+					Gene gene = new Gene(locus,begin,end, sequence);
+					System.out.println(gene);
+					listagenes.add(gene);
 					
 					locus = "";
 					begin = -1;
 					end = -1;
 					sequence = new ArrayList<>(200);
 				}
+				
 				Matcher matcher = pattern.matcher(line);
 				// Procura pelos dados
 				while (matcher.find()) {
@@ -91,12 +97,5 @@ public class AbrirArquivo {
 		this.loaded = true;
 	}
 
-	public static void main(String args[]){
-		AbrirArquivo lf = AbrirArquivo.getInstance();
-		try {
-			lf.inicializa(new File("H37RvSequence.txt"));
-		} catch (FileNotFoundException e) {
-			System.out.println("Arquivo não encontrado!!");
-		}
-	}
+
 }
