@@ -9,7 +9,7 @@ public class App {
 		AbrirArquivo lf = AbrirArquivo.getInstance();
 		try {
 			ArrayList<Gene> genes = lf.inicializa(new File("sequence.txt"));
-			genes.get(0).geracodons1();
+			genes.get(0).testandogeracodons();
 		} catch (FileNotFoundException e) {
 			System.out.println("Arquivo não encontrado!!");
 		}

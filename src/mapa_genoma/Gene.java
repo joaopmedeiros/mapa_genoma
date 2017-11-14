@@ -28,65 +28,14 @@ public class Gene {
 	}
 	
 	
-	public void geracodons1() {
+	public void testandogeracodons() {
 		Leitura1 leitura = new Leitura1();
-		System.out.println(leitura.executarLeitura(basesGeral));
-		AminoacidTable a = AminoacidTable.getInstance();
-		String codon = leitura.executarLeitura(basesGeral).get(0);
-		System.out.println(a.getAminoacid(codon));
+		ArrayList<String> lista_codons = leitura.executarLeitura(basesGeral);		
+		AminoacidTable a = AminoacidTable.getInstance();		
+		for(String codon: lista_codons) {
+			System.out.println(codon+" = "+a.getAminoacid(codon));					
+		}		
+	}
 		
-		
-	}
-	
-	
-	public String getLocus() {
-		return locus;
-	}
-	public void setLocus(String locus) {
-		this.locus = locus;
-	}
-	public long getPos_ini() {
-		return pos_ini;
-	}
-	public void setPos_ini(int pos_ini) {
-		this.pos_ini = pos_ini;
-	}
-	public long getPos_final() {
-		return pos_final;
-	}
-	public void setPos_final(int pos_final) {
-		this.pos_final = pos_final;
-	}
-	public ArrayList<Character> getBasesGeral() {
-		return basesGeral;
-	}
-	public void setBasesGeral(ArrayList<Character> basesGeral) {
-		this.basesGeral = basesGeral;
-	}
-	
-	
-	
-	public ArrayList<String> getBaseCorreta() {
-		return baseCorreta;
-	}
-	public void setBaseCorreta(ArrayList<String> baseCorreta) {
-		this.baseCorreta = baseCorreta;
-	}
-	public ArrayList<String> getBasesAgrupadas() {
-		return basesAgrupadas;
-	}
-	public void setBasesAgrupadas(ArrayList<String> basesAgrupadas) {
-		this.basesAgrupadas = basesAgrupadas;
-	}
-	public ArrayList<Leitura> getLeituras() {
-		return leituras;
-	}
-	public void setLeituras(ArrayList<Leitura> leituras) {
-		this.leituras = leituras;
-	}
-	
-	
-	
-	
 
 }
