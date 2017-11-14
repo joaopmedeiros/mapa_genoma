@@ -31,6 +31,10 @@ public class Gene {
 	public void geracodons1() {
 		Leitura1 leitura = new Leitura1();
 		System.out.println(leitura.executarLeitura(basesGeral));
+		AminoacidTable a = AminoacidTable.getInstance();
+		String codon = leitura.executarLeitura(basesGeral).get(0);
+		System.out.println(a.getAminoacid(codon));
+		
 		
 	}
 	
