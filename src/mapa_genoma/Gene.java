@@ -8,7 +8,7 @@ public class Gene {
 	private ArrayList<Character> basesGeral;
 	private ArrayList<String> baseCorreta;
 	private ArrayList<String> basesAgrupadas;
-	private ArrayList<Leitura> leituras;
+	private ArrayList<Leituras> leituras;
 	
 	public Gene(String locus, long pos_ini, long pos_final, ArrayList<Character> basesGeral) {
 		this.locus = locus;
@@ -17,7 +17,7 @@ public class Gene {
 		this.basesGeral = basesGeral;
 		this.baseCorreta = new ArrayList<String>();
 		this.basesAgrupadas = new ArrayList<String>();
-		this.leituras = new ArrayList<Leitura>();
+		this.leituras = new ArrayList<Leituras>();
 	}
 	
 	@Override
@@ -29,12 +29,26 @@ public class Gene {
 	
 	
 	public void testandogeracodons() {
-		Leitura1 leitura = new Leitura1();
-		ArrayList<String> lista_codons = leitura.executarLeitura(basesGeral);		
-		AminoacidTable a = AminoacidTable.getInstance();		
-		for(String codon: lista_codons) {
-			System.out.println(codon+" = "+a.getAminoacid(codon));					
-		}		
+		AminoacidTables a = AminoacidTables.getInstance();
+		Leitura1 leitura1 = new Leitura1();
+		Leitura2 leitura2 = new Leitura2();
+		ArrayList<Leituras> leituras = new ArrayList<Leituras>();
+		leituras.add(leitura1);
+		leituras.add(leitura2);
+		
+		for(Leituras l: leituras) {
+			System.out.println("Executando: "+l.getClass());
+			ArrayList<String> lista_codons = l.executarLeitura(basesGeral);
+			for(String codon: lista_codons) {
+				System.out.println(codon+" = "+a.getAminoacid(codon));					
+			}	
+		}
+		
+		
+		
+				
+				
+			
 	}
 		
 

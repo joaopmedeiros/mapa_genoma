@@ -1,20 +1,21 @@
 package mapa_genoma;
+
 import java.util.HashMap;
 import java.util.Map;
 
-public class AminoacidTable {
-	
-	private static AminoacidTable este = null;
+public class AminoacidTables {
+
+	private static AminoacidTables este = null;
 	private Map<String, String> aminoacidTable;
 	
-	private AminoacidTable() {
+	private AminoacidTables() {
 		aminoacidTable = new HashMap<String, String>();
         populateAminoacidTable();
 	}
 
-	public static AminoacidTable getInstance() {
+	public static AminoacidTables getInstance() {
 		if (este == null) {
-			este = new AminoacidTable();
+			este = new AminoacidTables();
 		}
 		return este;
 	}
@@ -115,4 +116,5 @@ public class AminoacidTable {
 	}
 	
 
+	
 }
