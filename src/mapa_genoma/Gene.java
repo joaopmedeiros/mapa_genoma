@@ -32,9 +32,11 @@ public class Gene {
 		AminoacidTables a = AminoacidTables.getInstance();
 		Leitura1 leitura1 = new Leitura1();
 		Leitura2 leitura2 = new Leitura2();
+		Leitura3 leitura3 = new Leitura3();
 		ArrayList<Leituras> leituras = new ArrayList<Leituras>();
 		leituras.add(leitura1);
 		leituras.add(leitura2);
+		leituras.add(leitura3);
 		
 		for(Leituras l: leituras) {
 			System.out.println("Executando: "+l.getClass());

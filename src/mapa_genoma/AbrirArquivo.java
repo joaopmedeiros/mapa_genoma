@@ -38,16 +38,9 @@ public class AbrirArquivo {
 			String line = data.nextLine();
 			// Se é uma linha de cabeçalho ...
 			if (line.length() > 0 && line.charAt(0) == '>') {
-				if (begin != -1) { // Se já tem um Gene para montar, monta e armazena
-					// Neste exemplo está imprimindo na tela, mas deveria armazenar na estrutura de dados
-					// System.out.println("Locus: "+locus+", inicio:"+begin+", "+end);
-					// System.out.println(sequence);
-					// System.out.println("--------");
-					
+				if (begin != -1) {
 					Gene gene = new Gene(locus,begin,end, sequence);
-					//System.out.println(gene);
 					listagenes.add(gene);
-					
 					locus = "";
 					begin = -1;
 					end = -1;
@@ -55,7 +48,6 @@ public class AbrirArquivo {
 				}
 				
 				Matcher matcher = pattern.matcher(line);
-				// Procura pelos dados
 				while (matcher.find()) {
 					String token = matcher.group(1);
 					Matcher matchLoc = patloc.matcher(token);
@@ -69,7 +61,7 @@ public class AbrirArquivo {
 						}
 					}
 				}
-			} else { // Se é uma linha de sequencia de gene ...
+			} else {
 				for (int i = 0; i < line.length(); i++) {
 					sequence.add(line.charAt(i));
 				}
