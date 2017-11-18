@@ -27,12 +27,12 @@ public class Gene {
 		this.aminoAcidosAgrupados = new ArrayList<ArrayList<String>>();
 		this.baseCorreta = new ArrayList<String>();
 		
-		Leitura1 leitura1 = new Leitura1();
-		Leitura2 leitura2 = new Leitura2();
-		Leitura3 leitura3 = new Leitura3();
-		Leitura4 leitura4 = new Leitura4();
-		Leitura5 leitura5 = new Leitura5();
-		Leitura6 leitura6 = new Leitura6();
+		Leitura531 leitura1 = new Leitura531();
+		Leitura532 leitura2 = new Leitura532();
+		Leitura533 leitura3 = new Leitura533();
+		Leitura351 leitura4 = new Leitura351();
+		Leitura352 leitura5 = new Leitura352();
+		Leitura353 leitura6 = new Leitura353();
 		
 		
 		leituras.add(leitura1);

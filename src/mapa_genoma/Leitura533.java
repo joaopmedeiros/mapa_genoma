@@ -1,11 +1,14 @@
 package mapa_genoma;
+
 import java.util.ArrayList;
 import java.util.ListIterator;
 
-public class Leitura2 extends LeiturasCodons {
-	public Leitura2() {
+public class Leitura533 extends LeiturasCodons{
+	
+	public Leitura533() {
 		super();
 	}
+	
 	
 	@Override
 	public ArrayList<String> executarLeitura(ArrayList<Character> basesGeral) {
@@ -14,7 +17,9 @@ public class Leitura2 extends LeiturasCodons {
 		String codon_temp = "";
 		
 		iterator.next(); // Pulando o primeiro
-		for(int i=2; i<=basesGeral.size()-3;i=i+3) {
+		iterator.next(); // Pulando o segundo
+	
+		for(int i=3; i<=basesGeral.size()-3;i=i+3) {
 			for(int j = 0; j<3;j++) {
 				codon_temp = codon_temp + iterator.next();
 			}
@@ -23,7 +28,5 @@ public class Leitura2 extends LeiturasCodons {
 		}
 		return lista_codons;
 	}
-	
 
 }
-

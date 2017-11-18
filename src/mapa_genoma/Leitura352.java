@@ -3,8 +3,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 //  import java.util.ListIterator;
 
-public class Leitura5 extends Leitura2 {
-	public Leitura5() {
+public class Leitura352 extends Leitura532 {
+	public Leitura352() {
 		super();
 	}
 	

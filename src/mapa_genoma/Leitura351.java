@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 // import java.util.ListIterator;
 
-public class Leitura4 extends Leitura1 {
+public class Leitura351 extends Leitura531 {
 	
-	public Leitura4() {
+	public Leitura351() {
 		super();
 	}
 
