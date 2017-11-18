@@ -83,7 +83,7 @@ public class Gene {
     	ArrayList<String> lista_amino_correta = null;
     	
     	for(ArrayList<String> lista_amino : aminoacidos) {
-    		int cont_distancia = 0;
+    		int cont_distancia = -1;
     		for(String amino : lista_amino) {
     			if(amino.equalsIgnoreCase("Met")) {    				
     				cont_distancia = 0;
