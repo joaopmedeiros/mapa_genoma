@@ -2,7 +2,7 @@ package mapa_genoma;
 import java.util.ArrayList;
 import java.util.ListIterator;
 
-public class Leitura2 extends Leituras {
+public class Leitura2 extends LeiturasCodons {
 	public Leitura2() {
 		super();
 	}
