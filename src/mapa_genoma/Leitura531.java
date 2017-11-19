@@ -25,4 +25,6 @@ public class Leitura531 extends LeiturasCodons {
 		return lista_codons;
 	}
 
+
+
 }

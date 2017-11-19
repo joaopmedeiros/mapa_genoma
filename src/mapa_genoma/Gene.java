@@ -14,7 +14,6 @@ public class Gene {
 	private ArrayList<ArrayList<String>> basesAgrupadas;
 	private ArrayList<ArrayList<String>> aminoAcidosAgrupados;
 	private ArrayList<String> baseCorreta;
-
 	
 	
 	public Gene(String locus, long pos_ini, long pos_final, ArrayList<Character> basesGeral) {
@@ -25,22 +24,14 @@ public class Gene {
 		this.leituras = new ArrayList<LeiturasCodons>();
 		this.basesAgrupadas = new ArrayList<ArrayList<String>>();
 		this.aminoAcidosAgrupados = new ArrayList<ArrayList<String>>();
-		this.baseCorreta = new ArrayList<String>();
-		
-		Leitura531 leitura1 = new Leitura531();
-		Leitura532 leitura2 = new Leitura532();
-		Leitura533 leitura3 = new Leitura533();
-		Leitura351 leitura4 = new Leitura351();
-		Leitura352 leitura5 = new Leitura352();
-		Leitura353 leitura6 = new Leitura353();
-		
-		
-		leituras.add(leitura1);
-		leituras.add(leitura2);
-		leituras.add(leitura3);
-		leituras.add(leitura4);
-		leituras.add(leitura5);
-		leituras.add(leitura6);
+		this.baseCorreta = new ArrayList<String>();		
+	
+		leituras.add(new Leitura531());
+		leituras.add(new Leitura532());
+		leituras.add(new Leitura533());
+		leituras.add(new Leitura351());
+		leituras.add(new Leitura352());
+		leituras.add(new Leitura353());
 		
 	}
 	
@@ -55,10 +46,10 @@ public class Gene {
 		
 	}
 	
-	public void geraBasesAgrupadas() {		
+	public void geraBasesAgrupadas() {
 		for(LeiturasCodons l: leituras) {
 			basesAgrupadas.add(l.executarLeitura(basesGeral));
-			}	
+			}
 	}		
 
 	
