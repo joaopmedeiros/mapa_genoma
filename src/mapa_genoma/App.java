@@ -9,10 +9,10 @@ public class App {
 		AbrirArquivo lf = AbrirArquivo.getInstance();
 		try {
 			ArrayList<Gene> genes = lf.inicializa(new File("sequence_test.txt"));
-			genes.get(3).geraBasesAgrupadas();			
-			genes.get(3).geraAminoacidosAgrupados();
-			genes.get(3).geraAminoacidoCorreto();
-			System.out.println(genes.get(3).toString());
+			genes.get(0).geraBasesAgrupadas();			
+			genes.get(0).geraAminoacidosAgrupados();
+			genes.get(0).geraAminoacidoCorreto();
+			System.out.println(genes.get(0).toString());
 		} catch (FileNotFoundException e) {
 			System.out.println("Arquivo não encontrado!!");
 		}

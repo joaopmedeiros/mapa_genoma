@@ -14,8 +14,7 @@ public class Gene {
 	private ArrayList<ArrayList<String>> basesAgrupadas;
 	private ArrayList<ArrayList<String>> aminoAcidosAgrupados;
 	private ArrayList<String> baseCorreta;
-	
-	
+		
 	public Gene(String locus, long pos_ini, long pos_final, ArrayList<Character> basesGeral) {
 		this.locus = locus;
 		this.pos_ini = pos_ini;
@@ -31,8 +30,7 @@ public class Gene {
 		leituras.add(new Leitura533());
 		leituras.add(new Leitura351());
 		leituras.add(new Leitura352());
-		leituras.add(new Leitura353());
-		
+		leituras.add(new Leitura353());		
 	}
 	
 	@Override
@@ -42,8 +40,7 @@ public class Gene {
 				"Sequencia = " + basesGeral +"\n" +
 				"Bases agrupadas = " + basesAgrupadas +"\n" +
 				"Aminoacidos agrupados = " + aminoAcidosAgrupados +"\n" +
-				"Aminoacido correto = "+ baseCorreta ;
-		
+				"Aminoacido correto = "+ baseCorreta ;		
 	}
 	
 	public void geraBasesAgrupadas() {
@@ -51,8 +48,6 @@ public class Gene {
 			basesAgrupadas.add(l.executarLeitura(basesGeral));
 			}
 	}		
-
-	
 	
 	public void geraAminoacidosAgrupados() {
 		AminoacidTables a = AminoacidTables.getInstance();		
@@ -75,28 +70,24 @@ public class Gene {
     	
     	for(ArrayList<String> lista_amino : aminoacidos) {
     		int cont_distancia = -1;
+    		boolean contar = false;
     		for(String amino : lista_amino) {
     			if(amino.equalsIgnoreCase("Met")) {    				
-    				cont_distancia = 0;
+    				contar = true;    				
     			}
-    			if(cont_distancia>-1) {
+    			if(contar) {
     				cont_distancia++;
     			}
-    			if(amino.equalsIgnoreCase("Stop")) {
+    			if(contar && amino.equalsIgnoreCase("Stop")) {
     				if(cont_distancia>maior_distancia) {
     	    			maior_distancia = cont_distancia;
     	    			lista_amino_correta = lista_amino;
     	    		}
     				cont_distancia = -1;
+    				contar = false;
     			}
-    		}
-    		
-    	}
-    	
-    	return lista_amino_correta;
-    	
+    		}    	
+    	}    	
+    	return lista_amino_correta;    	
     }
-	
-		
-
 }
