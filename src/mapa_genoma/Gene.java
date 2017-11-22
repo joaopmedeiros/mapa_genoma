@@ -1,9 +1,6 @@
 package mapa_genoma;
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.*;
 import java.util.stream.Collectors;
-import java.util.Arrays;
-import java.util.List;
 
 public class Gene {
 	private String locus;
@@ -25,59 +22,46 @@ public class Gene {
 		this.aminoAcidosAgrupados = new ArrayList<ArrayList<String>>();
 		this.baseCorreta = new ArrayList<String>();		
 	
-		leituras.add(new Leitura531());
-		leituras.add(new Leitura532());
-		leituras.add(new Leitura533());
-		leituras.add(new Leitura351());
-		leituras.add(new Leitura352());
-		leituras.add(new Leitura353());		
+		this.leituras.add(new Leitura531());
+		this.leituras.add(new Leitura532());
+		this.leituras.add(new Leitura533());
+		this.leituras.add(new Leitura351());
+		this.leituras.add(new Leitura352());
+		this.leituras.add(new Leitura353());		
 	}
 	
 	@Override
 	public String toString() {
 		return 
-				"Locus = " + locus + " Posicao Inicial = "+ pos_ini+ " Posicao Final = " + pos_final +"\n" +
-				"Sequencia = " + basesGeral +"\n" +
-				"Bases agrupadas = " + basesAgrupadas +"\n" +
-				"Aminoacidos agrupados = " + aminoAcidosAgrupados +"\n" +
-				"Aminoacido correto = "+ baseCorreta ;		
+				"Locus = " + this.locus + " Posicao Inicial = "+ this.pos_ini+ " Posicao Final = " + this.pos_final +"\n" +
+				"Sequencia = " + this.basesGeral +"\n" +
+				"Bases agrupadas = " + this.basesAgrupadas +"\n" +
+				"Aminoacidos agrupados = " + this.aminoAcidosAgrupados +"\n" +
+				"Aminoacido correto = "+ this.baseCorreta ;		
 	}
 	
 	public void geraBasesAgrupadas() {
-		for(LeiturasCodons l: leituras) {
-			basesAgrupadas.add(l.executarLeitura(basesGeral));
-			}
+		this.leituras.forEach(l -> basesAgrupadas.add(l.executarLeitura(basesGeral)));		
 	}		
 	
 	public void geraAminoacidosAgrupados() {
-		AminoacidTables a = AminoacidTables.getInstance();		
-		for(ArrayList<String> base: basesAgrupadas) {
-			ArrayList<String> list_amino = (ArrayList<String>) base.stream().map(x->a.getAminoacid(x)).collect(Collectors.toList());
-			aminoAcidosAgrupados.add(list_amino);
-		}	
-		
+		AminoacidTables a = AminoacidTables.getInstance();
+		this.basesAgrupadas.forEach(base -> aminoAcidosAgrupados.add((ArrayList<String>) base.stream().map(x->a.getAminoacid(x)).collect(Collectors.toList())));		
 	}
 	
 	public void geraAminoacidoCorreto() {
 		this.baseCorreta = percorreAminoacidos(aminoAcidosAgrupados);
 	}
-	
-	
-	
+		
     private ArrayList<String> percorreAminoacidos(ArrayList<ArrayList<String>> aminoacidos) {
     	int maior_distancia = -1;
-    	ArrayList<String> lista_amino_correta = null;
-    	
+    	ArrayList<String> lista_amino_correta = null;    	
     	for(ArrayList<String> lista_amino : aminoacidos) {
     		int cont_distancia = -1;
     		boolean contar = false;
     		for(String amino : lista_amino) {
-    			if(amino.equalsIgnoreCase("Met")) {    				
-    				contar = true;    				
-    			}
-    			if(contar) {
-    				cont_distancia++;
-    			}
+    			if(amino.equalsIgnoreCase("Met")) contar = true;
+    			if(contar) cont_distancia++;
     			if(contar && amino.equalsIgnoreCase("Stop")) {
     				if(cont_distancia>maior_distancia) {
     	    			maior_distancia = cont_distancia;
